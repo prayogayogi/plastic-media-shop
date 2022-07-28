@@ -30,27 +30,16 @@
         <div class="col-12">
             <div class="card card-default">
                 <div class="card-body">
-                    <div class="hoverable-data-table">
-                        <table id="hoverable-data-table" class="table table-hover nowrap" style="width:100%">
+                        <table id="myTable" class="table table-hover nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Id</th>
                                     <th>Price</th>
                                     <th>Tag</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-
-                            <tbody>
-                                @foreach ($products as $product)
-                                    <tr>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->tags }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
         </div>
@@ -66,5 +55,20 @@
 @push('after-script')
 <script src="{{ asset("assets-backEnd/plugins/data-tables/jquery.datatables.min.js") }}"></script>
 <script src="{{ asset("assets-backEnd/plugins/data-tables/datatables.bootstrap4.min.js") }}"></script>
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('product.index') }}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'price', name: 'price' },
+                { data: 'tags', name: 'tags' },
+                { data: 'action', name: 'action' }
+            ]
+        });
+    } );
+</script>
 
 @endpush

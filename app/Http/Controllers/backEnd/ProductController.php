@@ -9,6 +9,7 @@ use App\Interfaces\backEnd\ProductInterface;
 class ProductController extends Controller
 {
     protected $product;
+
     public function __construct(ProductInterface $product)
     {
         $this->product = $product;
@@ -18,12 +19,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->product->index();
-        return view("pages.backEnd.product.index", [
-            "products" => $products
-        ]);
+        if ($request->ajax()) {
+            return $this->product->index();
+        }
+        return view("pages.backEnd.product.index");
     }
 
     /**
