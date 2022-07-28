@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\backEnd;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Interfaces\backEnd\ProductInterface;
 
 class ProductController extends Controller
 {
+    protected $product;
+    public function __construct(ProductInterface $product)
+    {
+        $this->product = $product;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view("pages.backEnd.product.index");
+        $products = $this->product->index();
+        return view("pages.backEnd.product.index", [
+            "products" => $products
+        ]);
     }
 
     /**

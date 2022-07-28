@@ -34,24 +34,20 @@
                         <table id="hoverable-data-table" class="table table-hover nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Position</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Tag</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>Tiger</td>
-                                    <td>Nixon</td>
-                                    <td>System Architect</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Cara</td>
-                                    <td>Stevens</td>
-                                    <td>Sales Assistant</td>
-                                </tr>
+                                @foreach ($products as $product)
+                                    <tr>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>{{ $product->tags }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
