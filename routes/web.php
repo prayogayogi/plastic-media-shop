@@ -19,9 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(["auth"])->group(function (){
+Route::middleware(["auth"])->prefix("admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
     Route::resource("product", ProductController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

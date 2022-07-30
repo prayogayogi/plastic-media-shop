@@ -22,30 +22,33 @@
             </nav>
         </div>
         <div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-member"><span class="mdi mdi-plus"></span> TAMBAH PRODUK</button>
+            <a href="{{ route("product.create") }}" class="btn btn-primary" ><span class="mdi mdi-plus"></span> TAMBAH PRODUK</a>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
+            @include('components.alert')
             <div class="card card-default">
                 <div class="card-body">
-                        <table id="myTable" class="table table-hover nowrap" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Price</th>
-                                    <th>Tag</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        </table>
+                    <table id="myTable" class="table table-hover nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Produc Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- End Content -->
+
 @endsection
 
 @push('after-style')
@@ -62,9 +65,10 @@
             serverSide: true,
             ajax: '{{ route('product.index') }}',
             columns: [
-                { data: 'id', name: 'id' },
-                { data: 'price', name: 'price' },
-                { data: 'tags', name: 'tags' },
+                { data: 'DT_RowIndex', name: 'id' },
+                { data: 'name', name: 'name' },
+                { data: 'price', render: $.fn.dataTable.render.number( '.', ',', 0, 'Rp ' ) },
+                { data: 'product_category.name', name: 'ProductCategory.name' },
                 { data: 'action', name: 'action' }
             ]
         });

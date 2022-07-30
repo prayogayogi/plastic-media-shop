@@ -19,7 +19,6 @@ class ProductFactory extends Factory
             'name' => $name,
             'price' => $this->faker->numberBetween(),
             'description' => $this->faker->paragraph(),
-            'tags' => $this->faker->randomElement(["plastik es", "Plastik kantong", "plastik wadah", "plastik produk"], 3),
             'slug' => Str::slug($name),
             'categories_id' => $this->faker->numberBetween(1, 5)
         ];

@@ -23,13 +23,13 @@
     <div class="" data-simplebar style="height: 100%;">
         <!-- sidebar menu -->
         <ul class="nav sidebar-inner" id="sidebar-menu">
-            <li class="has-sub expand {{ (request()->is('dashboard*') || request()->is('dashboard*')) ? 'active':''  }}">
+            <li class="has-sub expand {{ (request()->is('admin/dashboard*') || request()->is('admin/dashboard*')) ? 'active':''  }}">
                 <a class="sidenav-item-link text-capitalize" href="{{ route("dashboard") }}" >
                     <i class="mdi mdi-view-dashboard-outline"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li class="has-sub expand {{ (request()->is('product*') || request()->is('product*')) ? 'active':''  }}">
+            <li class="has-sub expand {{ (request()->is('admin/product*') || request()->is('admin/product*')) ? 'active':''  }}">
                 <a class="sidenav-item-link text-capitalize" href="{{ route("product.index") }}" >
                     <i class="mdi mdi-shopping"></i>
                     <span class="nav-text">Product</span>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backEnd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Interfaces\backEnd\ProductInterface;
+use App\Repositories\backEnd\ProductCategoryRepository;
 
 class ProductController extends Controller
 {
@@ -34,7 +35,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $data = new ProductCategoryRepository();
+        $productCategories = $data->all();
+        return view("pages.backEnd.product.add", [
+            "productCategories" => $productCategories
+        ]);
     }
 
     /**
@@ -45,7 +50,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->product->store($request);
+        return redirect()->route("product.index")->with("success", "Data Success Created");
     }
 
     /**
@@ -67,7 +73,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = new ProductCategoryRepository();
+        $productCategories = $data->all();
+        $product = $this->product->edit($id);
+        return view("pages.backEnd.product.edit", [
+            "product" => $product,
+            "productCategories" => $productCategories
+        ]);
     }
 
     /**
@@ -79,7 +91,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->product->update($request, $id);
+        return redirect()->route("product.index")->with("success", "Data Success Edit");
     }
 
     /**
@@ -90,6 +103,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->product->destroy($id);
+        return redirect()->route("product.index")->with("success", "Data Success Delete");
     }
 }

@@ -1,12 +1,12 @@
 @extends("layouts.app-custome")
 
-@section("title", "Add Product")
+@section("title", "Edit Product")
 
 @section("content")
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Product</h1>
+                <h1>Edit Product</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb p-0">
                         <li class="breadcrumb-item">
@@ -17,7 +17,7 @@
                         <li class="breadcrumb-item">
                             Product
                         </li>
-                        <li class="breadcrumb-item" aria-current="page">Add Product</li>
+                        <li class="breadcrumb-item" aria-current="page">Edit Product</li>
                     </ol>
                 </nav>
             </div>
@@ -27,7 +27,8 @@
             <div class="col-xl-12">
                 <div class="card card-default">
                     <div class="card-body p-0" data-simplebar>
-                            <form action="{{ route("product.store") }}" method="post">
+                            <form action="{{ route("product.update", $product->id) }}" method="post">
+                                @method("PATCH")
                                 @csrf
                                 <div class="modal-header px-4">
                                 <h5 class="modal-title" id="exampleModalCenterTitle">Add New Product</h5>
@@ -38,21 +39,21 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Input name product">
+                                                <input type="text" name="name" class="form-control" id="name" value="{{ $product->name }}">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="price">Price Product</label>
-                                                <input type="text" name="price" class="form-control" id="price" placeholder="Input Price Product">
+                                                <input type="number" name="price" class="form-control" id="price" value="{{ $product->price }}"/>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-4">
                                                 <label for="description">Description</label>
-                                                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Input description"></textarea>
+                                                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Input description">{{ $product->description }}</textarea>
                                             </div>
                                         </div>
 
@@ -62,7 +63,7 @@
                                                 <select name="categories_id" class="form-control select2">
                                                     <option></option>
                                                     @forelse ($productCategories as $productCategory)
-                                                        <option value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
+                                                        <option value="{{ $productCategory->id }}" @if ($productCategory->id === $product->categories_id) selected @endif>{{ $productCategory->name }}</option>
                                                     @empty
                                                         <option value="null">Not Product Category</option>
                                                     @endforelse

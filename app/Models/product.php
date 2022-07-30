@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class product extends Model
+class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -19,8 +20,17 @@ class product extends Model
         "name",
         "price",
         "description",
-        "tags",
         "slug",
         "categories_id"
     ];
+
+    /**
+     * Get the ProductCategory that owns the product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ProductCategory(): BelongsTo
+    {
+        return $this->belongsTo(ProductCategory::class, "categories_id", "id");
+    }
 }
