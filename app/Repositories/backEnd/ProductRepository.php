@@ -13,7 +13,7 @@ class ProductRepository implements ProductInterface
     {
         $product = Product::with(["ProductCategory"]);
         return Datatables::of($product)
-            ->addColumn('action', "pages.actionDataTable.edit")
+            ->addColumn('action', "pages.actionDataTable.product.edit")
             ->addIndexColumn()
             ->toJson();
     }
