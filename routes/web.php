@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\backEnd\DashboardController;
-use App\Http\Controllers\backEnd\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backEnd\AdminController;
+use App\Http\Controllers\backEnd\ProductController;
+use App\Http\Controllers\backEnd\DashboardController;
+use App\Http\Controllers\backEnd\ProductCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,8 @@ Route::get('/', function () {
 Route::middleware(["auth"])->prefix("admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
     Route::resource("product", ProductController::class);
+    Route::resource("categoryProduct", ProductCategoryController::class);
+    Route::resource("admin", AdminController::class);
 });
 
 require __DIR__ . '/auth.php';

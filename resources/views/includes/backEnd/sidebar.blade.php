@@ -47,14 +47,14 @@
                     <span class="nav-text">Customer</span>
                 </a>
             </li>
-            <li class="has-sub expand">
-                <a class="sidenav-item-link text-capitalize" href="index copy.html" >
+            <li class="has-sub expand {{ (request()->is('admin/categoryProduct*') || request()->is('admin/categoryProduct*')) ? 'active':''  }}">
+                <a class="sidenav-item-link text-capitalize" href="{{ route("categoryProduct.index") }}" >
                     <i class="mdi mdi-math-norm-box"></i>
                     <span class="nav-text">Kategori</span>
                 </a>
             </li>
-            <li class="has-sub expand">
-                <a class="sidenav-item-link text-capitalize" href="index copy.html" >
+            <li class="has-sub expand {{ (request()->is('admin/admin*') || request()->is('admin/admin*')) ? 'active':''  }}">
+                <a class="sidenav-item-link text-capitalize" href="{{ route("admin.index") }}" >
                     <i class="mdi mdi-account"></i>
                     <span class="nav-text">Admin</span>
                 </a>

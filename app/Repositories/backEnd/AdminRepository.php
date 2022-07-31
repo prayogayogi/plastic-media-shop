@@ -5,15 +5,15 @@ namespace App\Repositories\backEnd;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Yajra\Datatables\Datatables;
-use App\Interfaces\backEnd\ProductInterface;
+use App\Interfaces\backEnd\AdminInterface;
 
-class ProductRepository implements ProductInterface
+class AdminRepository implements AdminInterface
 {
     public function index()
     {
-        $product = Product::with(["ProductCategory"]);
+        $product = Product::all();
         return Datatables::of($product)
-            ->addColumn('action', "pages.actionDataTable.product.edit")
+            ->addColumn('action', "pages.actionDataTable.admin.edit")
             ->addIndexColumn()
             ->toJson();
     }
