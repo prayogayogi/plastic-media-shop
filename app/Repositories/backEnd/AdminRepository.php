@@ -2,8 +2,7 @@
 
 namespace App\Repositories\backEnd;
 
-use App\Models\Product;
-use Illuminate\Support\Str;
+use App\Models\User;
 use Yajra\Datatables\Datatables;
 use App\Interfaces\backEnd\AdminInterface;
 
@@ -11,8 +10,8 @@ class AdminRepository implements AdminInterface
 {
     public function index()
     {
-        $product = Product::all();
-        return Datatables::of($product)
+        $admin = User::all();
+        return Datatables::of($admin)
             ->addColumn('action', "pages.actionDataTable.admin.edit")
             ->addIndexColumn()
             ->toJson();
@@ -20,25 +19,29 @@ class AdminRepository implements AdminInterface
 
     public function store($request)
     {
-        $data = $request->only("name", "price", "description", "categories_id");
-        $data["slug"] = Str::slug($request->input("name"));
-        Product::create($data);
+        $data = $request->only("name", "email");
+        $data["password"] = bcrypt($request->input("name"));
+        User::create($data);
     }
 
     public function edit($id)
     {
-        return Product::findOrFail($id);
+        return User::findOrFail($id);
     }
 
     public function update($request, $id)
     {
         $data = $request->input();
-        $product = Product::findOrFail($id);
-        $product->update($data);
+        if ($request->input("password")) {
+            $data["password"] = bcrypt($request->input("password"));
+        }
+        $admin = User::findOrFail($id);
+        $data["password"] = $admin->password;
+        $admin->update($data);
     }
 
     public function destroy($id)
     {
-        Product::destroy($id);
+        User::destroy($id);
     }
 }

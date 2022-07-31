@@ -1,23 +1,23 @@
 @extends("layouts.app-custome")
 
-@section("title", "Edit Product")
+@section("title", "Edit Admin")
 
 @section("content")
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Edit Product</h1>
+                <h1>Edit Admin</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb p-0">
                         <li class="breadcrumb-item">
-                            <a href="{{ route("product.index") }}">
+                            <a href="{{ route("admin.index") }}">
                                 <span class="mdi mdi-home"></span>
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            Product
+                            Admin
                         </li>
-                        <li class="breadcrumb-item" aria-current="page">Edit Product</li>
+                        <li class="breadcrumb-item" aria-current="page">Edit Admin</li>
                     </ol>
                 </nav>
             </div>
@@ -27,11 +27,11 @@
             <div class="col-xl-12">
                 <div class="card card-default">
                     <div class="card-body p-0" data-simplebar>
-                            <form action="{{ route("product.update", $product->id) }}" method="post">
+                            <form action="{{ route("admin.update", $admin->id) }}" method="post">
                                 @method("PATCH")
                                 @csrf
                                 <div class="modal-header px-4">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Add New Product</h5>
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Add New Admin</h5>
                                 </div>
 
                                 <div class="modal-body px-4">
@@ -39,35 +39,22 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
-                                                <input type="text" name="name" class="form-control" id="name" value="{{ $product->name }}">
+                                                <input type="text" name="name" class="form-control" id="name" value="{{ $admin->name }}">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label for="price">Price Product</label>
-                                                <input type="number" name="price" class="form-control" id="price" value="{{ $product->price }}"/>
+                                                <label for="email">Email</label>
+                                                <input type="email" name="email" class="form-control" id="email" value="{{ $admin->email }}">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
-                                            <div class="form-group mb-4">
-                                                <label for="description">Description</label>
-                                                <textarea class="form-control" name="description" id="description" rows="3" placeholder="Input description">{{ $product->description }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group mb-4">
-                                                <label for="categories_id">Product Category</label>
-                                                <select name="categories_id" class="form-control select2">
-                                                    <option></option>
-                                                    @forelse ($productCategories as $productCategory)
-                                                        <option value="{{ $productCategory->id }}" @if ($productCategory->id === $product->categories_id) selected @endif>{{ $productCategory->name }}</option>
-                                                    @empty
-                                                        <option value="null">Not Product Category</option>
-                                                    @endforelse
-                                                </select>
+                                            <div class="form-group">
+                                                <label for="price">Password</label>
+                                                <input type="password" name="password" class="form-control" id="price" placeholder="Input Password">
+                                                <span><p class="mt-1 pl-1">Jika tidak ingin menganti password tidak usah di isi.!</p></span>
                                             </div>
                                         </div>
 
@@ -76,7 +63,7 @@
 
                                 <div class="modal-footer px-4">
                                     <button type="button" class="btn btn-secondary btn-pill" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary btn-pill">Save Product</button>
+                                    <button type="submit" class="btn btn-primary btn-pill">Save Admin</button>
                                 </div>
                             </form>
                     </div>
@@ -96,7 +83,7 @@
     <script>
         $(document).ready(function(){
             $('.select2').select2({
-                placeholder: "Select Product Category",
+                placeholder: "Select Admin Category",
                 allowClear: true,
             });
         });
