@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -53,4 +53,64 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}
+@extends('layouts.guest')
+
+@section('title', "Login")
+
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="app-brand">
+                <a href="/index.html">
+                    <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33"
+                    viewBox="0 0 30 33">
+                    <g fill="none" fill-rule="evenodd">
+                        <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                        <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                    </g>
+                    </svg>
+
+                    <span class="brand-name">MEDIA PLASTIK</span>
+                </a>
+                </div>
+            </div>
+
+            <div class="card-body p-5">
+                <p class="text-secondary mb-5">Please fill in your unique admin login details bellow</p>
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="row">
+                        <div class="form-group col-md-12 mb-4">
+                            <input type="email" name="email" class="form-control input-lg" id="email" value="{{ old("email") }}" placeholder="Email">
+                        </div>
+
+                        <div class="form-group col-md-12 ">
+                            <input type="password" name="password" class="form-control input-lg" id="password" placeholder="Password">
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="d-flex my-2 justify-content-between">
+                                <div class="d-inline-block mr-3">
+                                    <label class="control control-checkbox"  style="display: none">Remember me
+                                        <input type="checkbox" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </div>
+                                @if (Route::has('password.request'))
+                                    <p><a class="text-secondary" href="{{ route('password.request') }}">Forgot Your Password?</a></p>
+                                @endif
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
