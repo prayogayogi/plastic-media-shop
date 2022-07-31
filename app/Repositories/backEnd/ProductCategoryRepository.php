@@ -14,10 +14,10 @@ class ProductCategoryRepository implements ProductCategoryInterface
         $product = ProductCategory::all();
         return Datatables::of($product)
             ->addColumn('action', "pages.actionDataTable.productCategory.edit")
+            ->addIndexColumn()
             ->editColumn('created_at', function ($user) {
                 return $user->created_at->format('Y/m/d');
             })
-            ->addIndexColumn()
             ->toJson();
     }
 
