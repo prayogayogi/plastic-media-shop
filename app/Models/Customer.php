@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProductCategory extends Model
+class Customer extends Model
 {
     use HasFactory, SoftDeletes;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +16,9 @@ class ProductCategory extends Model
      */
     protected $fillable = [
         'name',
-        'slug',
+        'email',
+        'phone',
+        'address',
+        'password',
     ];
 }

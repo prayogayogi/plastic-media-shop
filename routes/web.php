@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backEnd\AdminController;
 use App\Http\Controllers\backEnd\ProductController;
+use App\Http\Controllers\backEnd\CustomerController;
 use App\Http\Controllers\backEnd\DashboardController;
 use App\Http\Controllers\backEnd\ProductCategoryController;
 
@@ -26,6 +27,7 @@ Route::middleware(["auth"])->prefix("admin")->group(function () {
     Route::resource("product", ProductController::class);
     Route::resource("categoryProduct", ProductCategoryController::class);
     Route::resource("admin", AdminController::class);
+    Route::resource("customer", CustomerController::class);
 });
 
 require __DIR__ . '/auth.php';
