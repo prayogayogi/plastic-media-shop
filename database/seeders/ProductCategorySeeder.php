@@ -15,6 +15,6 @@ class ProductCategorySeeder extends Seeder
      */
     public function run()
     {
-        ProductCategory::factory(30)->create();
+        ProductCategory::factory(10)->create();
     }
 }
