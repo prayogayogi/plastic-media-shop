@@ -41,8 +41,8 @@
                     <span class="nav-text">Order</span>
                 </a>
             </li>
-            <li class="has-sub expand">
-                <a class="sidenav-item-link text-capitalize" href="index copy.html" >
+            <li class="has-sub expand {{ (request()->is('admin/customer*') || request()->is('admin/customer*')) ? 'active':''  }}">
+                <a class="sidenav-item-link text-capitalize" href="{{ route("customer.index") }}" >
                     <i class="mdi mdi-account-group-outline"></i>
                     <span class="nav-text">Customer</span>
                 </a>
