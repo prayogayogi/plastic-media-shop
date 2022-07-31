@@ -53,8 +53,8 @@
                     <span class="nav-text">Kategori</span>
                 </a>
             </li>
-            <li class="has-sub expand">
-                <a class="sidenav-item-link text-capitalize" href="index copy.html" >
+            <li class="has-sub expand {{ (request()->is('admin/admin*') || request()->is('admin/admin*')) ? 'active':''  }}">
+                <a class="sidenav-item-link text-capitalize" href="{{ route("admin.index") }}" >
                     <i class="mdi mdi-account"></i>
                     <span class="nav-text">Admin</span>
                 </a>
