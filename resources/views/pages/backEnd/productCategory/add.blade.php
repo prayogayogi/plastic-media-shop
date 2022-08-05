@@ -27,7 +27,7 @@
             <div class="col-xl-12">
                 <div class="card card-default">
                     <div class="card-body p-0" data-simplebar>
-                            <form action="{{ route("categoryProduct.store") }}" method="post">
+                            <form action="{{ route("categoryProduct.store") }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-header px-4">
                                 <h5 class="modal-title" id="exampleModalCenterTitle">Add New Product Category</h5>
@@ -39,6 +39,13 @@
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 <input type="text" name="name" class="form-control" id="name" placeholder="Input name product category">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="photo">Photo</label>
+                                                <input type="file" name="photos" class="form-control" id="photo" placeholder="Input name product category">
                                             </div>
                                         </div>
                                     </div>

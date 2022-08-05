@@ -36,6 +36,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
+                                <th>Photo</th>
                                 <th>Ditambahakan</th>
                                 <th>Action</th>
                             </tr>
@@ -66,6 +67,7 @@
             columns: [
                 { data: 'DT_RowIndex', name: 'id' },
                 { data: 'name', name: 'name' },
+                { data: 'photo', name: 'photo' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'action', name: 'action' }
             ]

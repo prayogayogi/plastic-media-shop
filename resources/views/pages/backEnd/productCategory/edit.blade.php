@@ -27,7 +27,7 @@
             <div class="col-xl-12">
                 <div class="card card-default">
                     <div class="card-body p-0" data-simplebar>
-                            <form action="{{ route("categoryProduct.update", $categoryProduct->id) }}" method="post">
+                            <form action="{{ route("categoryProduct.update", $categoryProduct->id) }}" method="post" enctype="multipart/form-data">
                                 @method("PATCH")
                                 @csrf
                                 <div class="modal-header px-4">
@@ -41,6 +41,16 @@
                                                 <label for="name">Name</label>
                                                 <input type="text" name="name" class="form-control" id="name" value="{{ $categoryProduct->name }}">
                                             </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="photo">Photo</label>
+                                                <input type="file" name="photos" class="form-control" id="photo" placeholder="Input name product category">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 ml-3">
+                                            <img src="{{ Storage::url($categoryProduct->photo) }}" alt="{{ $categoryProduct->name }}" width="100px">
                                         </div>
                                     </div>
                                 </div>
