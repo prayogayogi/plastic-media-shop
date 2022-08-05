@@ -41,8 +41,8 @@
                     <span class="nav-text">Product Galleri</span>
                 </a>
             </li>
-            <li class="has-sub expand">
-                <a class="sidenav-item-link text-capitalize" href="index copy.html" >
+            <li class="has-sub expand {{ (request()->is('admin/transaction*') || request()->is('admin/transaction*')) ? 'active':''  }}">
+                <a class="sidenav-item-link text-capitalize" href="{{ route("transaction.index") }}" >
                     <i class="mdi mdi-view-dashboard-outline"></i>
                     <span class="nav-text">Order</span>
                 </a>
