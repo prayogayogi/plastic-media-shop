@@ -34,6 +34,7 @@
                                     <th>No</th>
                                     <th class="col-md-2">Name Product</th>
                                     <th class="col-md-2">Price</th>
+                                    <th class="col-md-1">Quantity</th>
                                     <th>Description</th>
                                 </tr>
                             </thead>
@@ -44,6 +45,7 @@
                                         <td scope="row">{{ $loop->iteration }}</td>
                                         <td>{{ $transaction->product[0]->name }}</td>
                                         <td>@currency($transaction->product[0]->price)</td>
+                                        <td>{{ $transaction->quantity }}</td>
                                         <td>{{ $transaction->product[0]->description }}</td>
                                     </tr>
                                 @endforeach
