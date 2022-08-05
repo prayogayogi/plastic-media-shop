@@ -5,7 +5,7 @@
         </div>
 
         <div class="media-body align-self-center">
-            <h4 class="text-primary mb-2">1953</h4>
+            <h4 class="text-primary mb-2">{{ $order }}</h4>
             <p>TOTAL ORDER</p>
         </div>
     </div>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="media-body align-self-center">
-            <h4 class="text-primary mb-2">1450</h4>
+            <h4 class="text-primary mb-2">@currency($income)</h4>
             <p>TOTAL PENDAPATAN</p>
         </div>
     </div>
