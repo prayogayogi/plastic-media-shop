@@ -35,6 +35,12 @@
                     <span class="nav-text">Product</span>
                 </a>
             </li>
+            <li class="has-sub expand {{ (request()->is('admin/galleriProduct*') || request()->is('admin/galleriProduct*')) ? 'active':''  }}">
+                <a class="sidenav-item-link text-capitalize" href="{{ route("galleriProduct.index") }}" >
+                    <i class="mdi mdi-camera-burst"></i>
+                    <span class="nav-text">Product Galleri</span>
+                </a>
+            </li>
             <li class="has-sub expand">
                 <a class="sidenav-item-link text-capitalize" href="index copy.html" >
                     <i class="mdi mdi-view-dashboard-outline"></i>
