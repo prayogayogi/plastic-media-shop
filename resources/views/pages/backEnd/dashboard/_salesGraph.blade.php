@@ -1,11 +1,11 @@
 <div class="card card-default">
     <div class="card-header">
-        <h2>Sales Of The Year</h2>
+        <h2>CUSTOMER</h2>
     </div>
     <div class="card-body">
         <canvas id="linechart" class="chartjs"></canvas>
     </div>
-    <div class="card-footer d-flex flex-wrap bg-white p-0">
+    {{-- <div class="card-footer d-flex flex-wrap bg-white p-0">
         <div class="col-6 px-0">
             <div class="text-center p-4">
                 <h4>$6,308</h4>
@@ -18,5 +18,5 @@
                 <p class="mt-2">Total revenue of this year</p>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
