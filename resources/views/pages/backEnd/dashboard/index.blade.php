@@ -157,6 +157,53 @@
         }
         });
     }
+
+    /*======== 11. DOUGHNUT CHART ========*/
+    var doughnut = document.getElementById("doChart");
+    if (doughnut !== null) {
+        var myDoughnutChart = new Chart(doughnut, {
+        type: "doughnut",
+        data: {
+            labels: ["completed", "unpaid", "pending", "canceled"],
+            datasets: [
+            {
+                label: ["completed", "unpaid", "pending", "canceled"],
+                data: [4100, 2500, 1800, 2300],
+                backgroundColor: ["#4c84ff", "#29cc97", "#8061ef", "#fec402"],
+                borderWidth: 1
+                // borderColor: ['#4c84ff','#29cc97','#8061ef','#fec402']
+                // hoverBorderColor: ['#4c84ff', '#29cc97', '#8061ef', '#fec402']
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+            display: false
+            },
+            cutoutPercentage: 75,
+            tooltips: {
+            callbacks: {
+                title: function(tooltipItem, data) {
+                return "Order : " + data["labels"][tooltipItem[0]["index"]];
+                },
+                label: function(tooltipItem, data) {
+                return data["datasets"][0]["data"][tooltipItem["index"]];
+                }
+            },
+            titleFontColor: "#888",
+            bodyFontColor: "#555",
+            titleFontSize: 12,
+            bodyFontSize: 14,
+            backgroundColor: "rgba(256,256,256,0.95)",
+            displayColors: true,
+            borderColor: "rgba(220, 220, 220, 0.9)",
+            borderWidth: 2
+            }
+        }
+        });
+    }
 </script>
 
 @endpush

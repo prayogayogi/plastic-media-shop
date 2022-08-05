@@ -1,6 +1,6 @@
 <div class="card card-default">
     <div class="card-header justify-content-center">
-        <h2>Orders Overview</h2>
+        <h2>Rincian Pemesanan</h2>
     </div>
     <div class="card-body" >
         <canvas id="doChart" ></canvas>

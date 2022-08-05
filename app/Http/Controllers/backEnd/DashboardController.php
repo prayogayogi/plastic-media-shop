@@ -17,4 +17,11 @@ class DashboardController extends Controller
             "income" => $income
         ]);
     }
+
+
+    public function rincian()
+    {
+        $order = Transaction::all();
+        return response()->json($order);
+    }
 }

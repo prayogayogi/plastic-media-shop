@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 Route::middleware(["auth"])->prefix("admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
+    Route::get("/rincian", [DashboardController::class, "rincian"])->name("rincian");
     Route::get("/transaction", [TransactionController::class, "index"])->name("transaction.index");
     Route::get("/transaction/{id}", [TransactionController::class, "show"])->name("transaction.show");
     Route::resource("product", ProductController::class);
