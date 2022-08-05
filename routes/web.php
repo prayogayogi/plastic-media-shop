@@ -7,6 +7,7 @@ use App\Http\Controllers\backEnd\CustomerController;
 use App\Http\Controllers\backEnd\DashboardController;
 use App\Http\Controllers\backEnd\GalleriProductController;
 use App\Http\Controllers\backEnd\ProductCategoryController;
+use App\Http\Controllers\BackEnd\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::get('/', function () {
 
 Route::middleware(["auth"])->prefix("admin")->group(function () {
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
+    Route::get("/rincian", [DashboardController::class, "rincian"])->name("rincian");
+    Route::get("/transaction", [TransactionController::class, "index"])->name("transaction.index");
+    Route::get("/transaction/{id}", [TransactionController::class, "show"])->name("transaction.show");
     Route::resource("product", ProductController::class);
     Route::resource("categoryProduct", ProductCategoryController::class);
     Route::resource("admin", AdminController::class);

@@ -1,12 +1,12 @@
 <div class="card card-default">
     <div class="card-header justify-content-center">
-        <h2>Orders Overview</h2>
+        <h2>Rincian Pemesanan</h2>
     </div>
     <div class="card-body" >
         <canvas id="doChart" ></canvas>
     </div>
     <a href="#" class="pb-5 d-block text-center text-muted"><i class="mdi mdi-download mr-2"></i> Download overall report</a>
-    <div class="card-footer d-flex flex-wrap bg-white p-0">
+    {{-- <div class="card-footer d-flex flex-wrap bg-white p-0">
         <div class="col-6">
             <div class="py-4 px-4">
                 <ul class="d-flex flex-column justify-content-between">
@@ -23,5 +23,5 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>

@@ -1,44 +1,24 @@
-<div class="col-xl-3 col-sm-6">
-    <div class="card card-mini mb-4">
-        <div class="card-body">
-            <h2 class="mb-1">71,503</h2>
-            <p>Online Signups</p>
-            <div class="chartjs-wrapper">
-                <canvas id="barChart"></canvas>
-            </div>
+<div class="col-xl-6 col-sm-6">
+    <div class="media widget-media p-4 bg-white border">
+        <div class="icon rounded-circle bg-warning mr-4">
+            <i class="mdi mdi-cart-outline text-white "></i>
+        </div>
+
+        <div class="media-body align-self-center">
+            <h4 class="text-primary mb-2">{{ $order }}</h4>
+            <p>TOTAL ORDER</p>
         </div>
     </div>
 </div>
-<div class="col-xl-3 col-sm-6">
-    <div class="card card-mini  mb-4">
-        <div class="card-body">
-            <h2 class="mb-1">9,503</h2>
-            <p>New Visitors Today</p>
-            <div class="chartjs-wrapper">
-                <canvas id="dual-line"></canvas>
-            </div>
+<div class="col-xl-6 col-sm-6">
+    <div class="media widget-media p-4 bg-white border">
+        <div class="icon rounded-circle mr-4 bg-danger">
+            <i class="mdi mdi-cart-outline text-white "></i>
         </div>
-    </div>
-</div>
-<div class="col-xl-3 col-sm-6">
-    <div class="card card-mini mb-4">
-        <div class="card-body">
-            <h2 class="mb-1">71,503</h2>
-            <p>Monthly Total Order</p>
-            <div class="chartjs-wrapper">
-                <canvas id="area-chart"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-xl-3 col-sm-6">
-    <div class="card card-mini mb-4">
-        <div class="card-body">
-            <h2 class="mb-1">9,503</h2>
-            <p>Total Revenue This Year</p>
-            <div class="chartjs-wrapper">
-                <canvas id="line"></canvas>
-            </div>
+
+        <div class="media-body align-self-center">
+            <h4 class="text-primary mb-2">@currency($income)</h4>
+            <p>TOTAL PENDAPATAN</p>
         </div>
     </div>
 </div>
