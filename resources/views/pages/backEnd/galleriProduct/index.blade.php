@@ -1,28 +1,28 @@
 @extends("layouts.app-custome")
 
-@section("title", "Product")
+@section("title", "Galleri Product")
 
 @section("content")
 <div class="content">
     <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
         <div>
-            <h1>Product</h1>
+            <h1>GalleriProduct</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0">
                     <li class="breadcrumb-item">
-                        <a href="{{ route("product.index") }}">
+                        <a href="{{ route("galleriProduct.index") }}">
                         <span class="mdi mdi-home"></span>
                         </a>
                     </li>
                     <li class="breadcrumb-item">
-                        Product
+                        GalleriProduct
                     </li>
-                    <li class="breadcrumb-item" aria-current="page">List Product</li>
+                    <li class="breadcrumb-item" aria-current="page">List GalleriProduct</li>
                 </ol>
             </nav>
         </div>
         <div>
-            <a href="{{ route("product.create") }}" class="btn btn-primary" ><span class="mdi mdi-plus"></span> TAMBAH PRODUK</a>
+            <a href="{{ route("galleriProduct.create") }}" class="btn btn-primary" ><span class="mdi mdi-plus"></span> TAMBAH GALLERI PRODUK</a>
         </div>
     </div>
 
@@ -34,11 +34,10 @@
                     <table id="myTable" class="table table-hover nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Produc Category</th>
-                                <th>Action</th>
+                                <th class="col-md-1">No</th>
+                                <th class="col-md-4">Product</th>
+                                <th class="col-md-3">Photo</th>
+                                <th class="col-md-2">Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -66,9 +65,8 @@
             ajax: '{!! url()->current() !!}',
             columns: [
                 { data: 'DT_RowIndex', name: 'id' },
-                { data: 'name', name: 'name' },
-                { data: 'price', render: $.fn.dataTable.render.number( '.', ',', 0, 'Rp ' ) },
-                { data: 'product_category.name', name: 'ProductCategory.name' },
+                { data: 'product.name', name: 'Product.name' },
+                { data: 'photo', name: 'photo' },
                 { data: 'action', name: 'action' }
             ]
         });

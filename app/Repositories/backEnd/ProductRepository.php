@@ -11,10 +11,10 @@ class ProductRepository implements ProductInterface
 {
     public function index()
     {
-        $product = Product::with(["ProductCategory"]);
+        $product = Product::with(["ProductCategory", "GalleriProduct"]);
         return Datatables::of($product)
-            ->addColumn('action', "pages.actionDataTable.product.edit")
             ->addIndexColumn()
+            ->addColumn('action', "pages.actionDataTable.product.edit")
             ->toJson();
     }
 

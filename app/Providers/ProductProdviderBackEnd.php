@@ -9,7 +9,9 @@ use App\Interfaces\backEnd\CustomerInterface;
 use App\Repositories\backEnd\AdminRepository;
 use App\Repositories\backEnd\ProductRepository;
 use App\Repositories\backEnd\CustomerRepository;
+use App\Interfaces\backEnd\GalleriProductInterface;
 use App\Interfaces\backEnd\ProductCategoryInterface;
+use App\Repositories\backEnd\GalleriProductRepository;
 use App\Repositories\backEnd\ProductCategoryRepository;
 
 class ProductProdviderBackEnd extends ServiceProvider
@@ -25,6 +27,7 @@ class ProductProdviderBackEnd extends ServiceProvider
         $this->app->bind(AdminInterface::class, AdminRepository::class);
         $this->app->bind(CustomerInterface::class, CustomerRepository::class);
         $this->app->bind(ProductCategoryInterface::class, ProductCategoryRepository::class);
+        $this->app->bind(GalleriProductInterface::class, GalleriProductRepository::class);
     }
 
     /**
