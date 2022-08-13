@@ -20,7 +20,9 @@
     @include('includes.frontEnd.footer')
 
     <!-- Script -->
-    @include('includes.frontEnd.script')
+    @stack('before-script')
+        @include('includes.frontEnd.script')
+    @stack('after-script')
 </body>
 
 </html>

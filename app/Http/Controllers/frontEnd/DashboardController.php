@@ -43,4 +43,19 @@ class DashboardController extends Controller
     {
         return $this->dashboard->about();
     }
+
+    public function search(Request $request)
+    {
+        return $this->dashboard->search($request);
+    }
+
+    public function cart(Request $request)
+    {
+        return $this->dashboard->cart($request);
+    }
+
+    public function cart_store(Request $request)
+    {
+        return $this->dashboard->cart_store($request);
+    }
 }

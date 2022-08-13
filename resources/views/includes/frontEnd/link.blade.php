@@ -16,3 +16,6 @@
 
 <!-- Optional Plugins-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- FAVICON -->
+<link href="{{ asset("assets-frontEnd/img/favicon.png") }}" rel="shortcut icon" />

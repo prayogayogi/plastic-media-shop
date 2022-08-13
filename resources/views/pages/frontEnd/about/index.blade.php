@@ -16,7 +16,7 @@
                 <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner shadow-sm rounded">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset("assets-frontEnd/img/slides/slide1.jpg") }}" alt="First slide">
+                            <img class="d-block w-100" src="{{ asset("assets-frontEnd/img/slides/MEDIA_PLASTIK1.png") }}" alt="First slide">
                         </div>
                     </div>
                 </div>
