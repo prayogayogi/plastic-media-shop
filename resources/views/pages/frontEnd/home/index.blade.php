@@ -18,4 +18,6 @@
     <section class="products-grids trending pb-4">
         @include('pages.frontEnd.home._product')
     </section>
+
+
 @endsection

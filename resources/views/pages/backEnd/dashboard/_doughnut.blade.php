@@ -5,7 +5,7 @@
     <div class="card-body" >
         <canvas id="doChart" ></canvas>
     </div>
-    <a href="#" class="pb-5 d-block text-center text-muted"><i class="mdi mdi-download mr-2"></i> Download overall report</a>
+    <a href="#" class="pb-5 d-block text-center text-muted"></a>
     {{-- <div class="card-footer d-flex flex-wrap bg-white p-0">
         <div class="col-6">
             <div class="py-4 px-4">

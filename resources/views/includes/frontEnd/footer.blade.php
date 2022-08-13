@@ -6,13 +6,11 @@
                     <!-- Single Widget -->
                     <div class="single-footer about">
                         <div class="logo-footer">
-                            <i class="fa fa-shopping-bag fa-3x"></i> <span class="logo">MEDIA PLASTIK</span>
+                            {{-- <i class="fa fa-shopping-bag fa-3x"></i> <span class="logo">MEDIA PLASTIK</span> --}}
+                            <img src="{{ asset("assets-frontEnd/img/icon.png") }}" alt="" class="mb-2"> <span class="logo">MEDIA PLASTIK</span>
                         </div>
-                        <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna
-                            eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-                            facilisis luctus, metus.</p>
-                        <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456
-                                    789</a></span></p>
+                        <p class="text">Media plastik adalah layana yang menyediakan berbagai jenis plastik dan merupakan toko plastik yang lengakap satau-satunya yang ada di makasar, dan satu-satunya yang mengunkan pembayaran online payment.</p>
+                        <p class="call">Ada pertanyaan? Hubungi kami<span><a href="tel:123456789">+62 228173 7453</a></span></p>
                     </div>
                     <!-- End Single Widget -->
                 </div>

@@ -39,29 +39,23 @@
                         </p>
                     </div>
                     <div class="product-select">
-                        <form>
-                            <div class="form-group">
-                                <label>Size</label>
-                                <select class="form-control">
-                                    <option>-- Size --</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Color</label>
-                                <select class="form-control">
-                                    <option>-- Color --</option>
-                                </select>
-                            </div>
+                        <form method="post" action="{{ route("cart_store") }}">
+                            @csrf
                             <div class="row">
+                                <input type="hidden" name="product_id" value="{{ $productDetail->id }}">
                                 <div class="col-md-3">
-                                    <input type="number" class="form-control" value="1"/>
+                                    <input name="count_cart" type="number" id="cart" class="form-control" value="1"/>
                                 </div>
-                                <div class="col-md-5">
-                                    <button type="button" class="btn btn-primary btn-block">Add to Cart</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#" class="btn btn-secondary"><i class="fa fa-heart-o"></i></a>
-                                </div>
+                                @auth
+                                    <div class="col-md-5">
+                                        <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                                    </div>
+                                @endauth
+                                @guest
+                                    <div class="col-md-5">
+                                        <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#login">Add to Cart</a>
+                                    </div>
+                                @endguest
                             </div>
                         </form>
                     </div>
@@ -74,48 +68,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="product-details">
-                    <div class="nav-wrapper">
-                        <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false">Reviews</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
-                                    <div class="review-form">
-                                        <h3>Write a review</h3>
-                                        <form>
-                                            <div class="form-group">
-                                                <label>Your Name</label>
-                                                <input type="text" class="form-control"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Your Review</label>
-                                                <textarea cols="4" class="form-control"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -124,3 +76,12 @@
 </section>
 
 @endsection
+
+@push('after-script')
+    <script>
+        $(document).ready(function(){
+            let data = $("#cart").val();
+            console.log(data);
+        });
+    </script>
+@endpush

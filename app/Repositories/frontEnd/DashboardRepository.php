@@ -2,12 +2,15 @@
 
 namespace App\Repositories\frontEnd;
 
-use App\Interfaces\frontEnd\DashboardInterface;
+use App\Models\Cart;
+use App\Models\User;
 use App\Models\Product;
-use App\Models\ProductCategory;
-use Yajra\Datatables\Datatables;
+use App\Models\Customer;
 use App\Models\Transaction;
 use Illuminate\Http\Response;
+use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Auth;
+use App\Interfaces\frontEnd\DashboardInterface;
 
 class DashboardRepository implements DashboardInterface
 {
@@ -58,5 +61,38 @@ class DashboardRepository implements DashboardInterface
     public function about(): Response
     {
         return response()->view("pages.frontEnd.about.index");
+    }
+
+    public function search($request)
+    {
+        $request->session()->forget('cart');
+        $data = $request->input("product");
+        $products = Product::with(["GalleriProduct"])->where("name", "LIKE", "%" . $data . "%")->get();
+        return response()->view("pages.frontEnd.product.productSearch", [
+            "title" =>  "Product $data",
+            "products" => $products
+        ]);
+    }
+
+    public function cart_store($request)
+    {
+        $users_id = Auth::user()->id;
+        $product = $request->input("product_id");
+        $data = [
+            "products_id" => $product,
+            "users_id" => $users_id,
+            "count" => $request->input("count_cart")
+        ];
+        Cart::create($data);
+        return redirect()->route("cart");
+    }
+
+    public function cart($request)
+    {
+        $users_id = Auth::user()->id;
+        $carts = Cart::with(["Product", "User"])->where("users_id", $users_id)->get();
+        return response()->view("pages.frontEnd.cart.index", [
+            "carts" => $carts
+        ]);
     }
 }
