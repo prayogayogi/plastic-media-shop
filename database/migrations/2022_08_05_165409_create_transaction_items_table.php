@@ -15,7 +15,7 @@ class CreateTransactionItemsTable extends Migration
     {
         Schema::create('transaction_items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("customer_id");
+            $table->bigInteger("users_id");
             $table->bigInteger("product_id");
             $table->bigInteger("transaction_id");
             $table->string("quantity");

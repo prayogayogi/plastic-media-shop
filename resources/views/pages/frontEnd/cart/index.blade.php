@@ -5,9 +5,9 @@
 @section('content')
 <section class="products-grid pb-4 pt-4">
     <div class="container">
-        <form action="{{ route("checkout") }}" method="post">
-            @csrf
-        <div class="row">
+        {{-- <form action="{{ route("checkout") }}" method="post">
+            @csrf --}}
+            <div class="row">
                 <div class="col col-10">
                     <table class="table table-borderless">
                         <thead>
@@ -35,10 +35,11 @@
                     </table>
                 </div>
                 <div class="col col-2 align-self-center">
-                    <button type="submit" class="btn btn-dark">Checkout</button>
+                    {{-- <button type="submit" class="btn btn-dark">Checkout</button> --}}
+                    <a href="{{ route("checkout", auth()->user()->id) }}" class="btn btn-dark">Checkout</a>
                 </div>
             </div>
-        </form>
+        {{-- </form> --}}
     </div>
 </section>
 @endsection

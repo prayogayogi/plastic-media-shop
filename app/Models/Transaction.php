@@ -18,23 +18,22 @@ class Transaction extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'customer_id',
+        'users_id',
         'address',
-        'payment',
         'total_price',
-        'shipping_price',
+        'midtrans_url',
         'status',
     ];
 
 
     /**
-     * Get the Customer that owns the Transaction
+     * Get the User that owns the Transaction
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Customer(): BelongsTo
+    public function User(): BelongsTo
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class, "users_id", "id");
     }
 
     /**

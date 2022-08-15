@@ -16,11 +16,18 @@ class CheckoutController extends Controller
      */
     public function __construct(CheckoutInterface $checkout)
     {
+        // Repository chekcout
         $this->checkout = $checkout;
     }
 
-    public function checkout()
+    public function checkout(Request $request, $id)
     {
+        return $this->checkout->checkout($request, $id);
+    }
+
+    public function midtransCallback(Request $request)
+    {
+        return $this->checkout->midtransCallback($request);
     }
 
     public function destroy_cart($id)

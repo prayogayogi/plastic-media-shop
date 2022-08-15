@@ -10,7 +10,7 @@ class TransactionRepository implements TransactionInterface
 {
     public function index()
     {
-        $product = Transaction::with(["TransactionItem.Product", "Customer"]);
+        $product = Transaction::with(["TransactionItem.Product", "User"]);
         return Datatables::of($product)
             ->addIndexColumn()
             ->addColumn('action', "pages.actionDataTable.transaction.edit")

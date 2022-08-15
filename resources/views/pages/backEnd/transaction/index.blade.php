@@ -34,7 +34,6 @@
                                 <th>No</th>
                                 <th>Name Customer</th>
                                 <th>Alamat</th>
-                                <th>Metode Pembayaran</th>
                                 <th>Total Harga</th>
                                 <th class="col-md-1">Action</th>
                             </tr>
@@ -64,9 +63,8 @@
             ajax: '{!! url()->current() !!}',
             columns: [
                 { data: 'DT_RowIndex', name: 'id' },
-                { data: 'customer.name', name: 'Customer.name' },
+                { data: 'user.name', name: 'User.name' },
                 { data: 'address', name: 'address' },
-                { data: 'payment', name: 'payment' },
                 { data: 'total_price', render: $.fn.dataTable.render.number( '.', ',', 0, 'Rp ' ) },
                 { data: 'action', name: 'action' }
             ]

@@ -56,8 +56,12 @@ Route::middleware(["auth", "checkLogin:CUSTOMER"])->group(function () {
     Route::post("/cart", [DashboardControllerFrontEnd::class, "cart_store"])->name("cart_store");
 
     // Route Checkout
-    Route::post("/checkout", [CheckoutController::class, "checkout"])->name("checkout");
+    Route::get("/checkout/{id}", [CheckoutController::class, "checkout"])->name("checkout");
     Route::get("/cart/{id}", [CheckoutController::class, "destroy_cart"])->name("destroy_cart");
 });
+
+// Midtrans Routes
+Route::get("payment/success", [CheckoutController::class, "midtransCallback"]);
+Route::post("payment/success", [CheckoutController::class, "midtransCallback"]);
 
 require __DIR__ . '/auth.php';

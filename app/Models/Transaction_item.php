@@ -17,7 +17,7 @@ class Transaction_item extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'customer_id',
+        'users_id',
         'product_id',
         'transaction_id',
         'quantity'
