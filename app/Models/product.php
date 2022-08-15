@@ -45,4 +45,14 @@ class Product extends Model
     {
         return $this->hasMany(GalleriProduct::class);
     }
+
+    /**
+     * Get all of the TransactionItems for the product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function TransactionItems(): HasMany
+    {
+        return $this->hasMany(Transaction_item::class);
+    }
 }

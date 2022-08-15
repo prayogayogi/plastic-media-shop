@@ -29,6 +29,12 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
+            <li class="has-sub expand {{ (request()->is('admin/profit*') || request()->is('admin/profit*')) ? 'active':''  }}">
+                <a class="sidenav-item-link text-capitalize" href="{{ route("profit.index") }}" >
+                    <i class="mdi mdi-arrange-send-backward"></i>
+                    <span class="nav-text">Profit</span>
+                </a>
+            </li>
             <li class="has-sub expand {{ (request()->is('admin/categoryProduct*') || request()->is('admin/categoryProduct*')) ? 'active':''  }}">
                 <a class="sidenav-item-link text-capitalize" href="{{ route("categoryProduct.index") }}" >
                     <i class="mdi mdi-math-norm-box"></i>

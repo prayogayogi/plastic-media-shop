@@ -34,6 +34,7 @@
                                 <th>No</th>
                                 <th>Name Customer</th>
                                 <th>Alamat</th>
+                                <th>Tanggal Order</th>
                                 <th>Total Harga</th>
                                 <th class="col-md-1">Action</th>
                             </tr>
@@ -65,9 +66,10 @@
                 { data: 'DT_RowIndex', name: 'id' },
                 { data: 'user.name', name: 'User.name' },
                 { data: 'address', name: 'address' },
+                { data: 'created_at', name: 'created_at' },
                 { data: 'total_price', render: $.fn.dataTable.render.number( '.', ',', 0, 'Rp ' ) },
                 { data: 'action', name: 'action' }
-            ]
+            ],
         });
     } );
 </script>

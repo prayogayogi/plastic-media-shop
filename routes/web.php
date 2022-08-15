@@ -10,6 +10,7 @@ use App\Http\Controllers\frontEnd\CheckoutController;
 use App\Http\Controllers\BackEnd\TransactionController;
 use App\Http\Controllers\backEnd\GalleriProductController;
 use App\Http\Controllers\backEnd\ProductCategoryController;
+use App\Http\Controllers\backEnd\ProfitController;
 use App\Http\Controllers\frontEnd\DashboardController as DashboardControllerFrontEnd;
 
 
@@ -34,6 +35,9 @@ Route::middleware(["auth", "checkLogin:ADMIN"])->prefix("admin")->group(function
     Route::resource("admin", AdminController::class);
     Route::resource("customer", CustomerController::class);
     Route::resource("galleriProduct", GalleriProductController::class);
+
+    // Route Profit
+    Route::get("profit", [ProfitController::class, "index"])->name("profit.index");
 });
 
 // Route Product and home

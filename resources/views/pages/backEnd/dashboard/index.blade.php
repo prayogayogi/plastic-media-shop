@@ -12,12 +12,27 @@
         <div class="row">
             <div class="col-xl-8 col-md-12">
                 <!-- Sales Graph -->
-                @include("pages.backEnd.dashboard._salesGraph")
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h2>CUSTOMER</h2>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="linechart" class="chartjs"></canvas>
+                    </div>
+                </div>
             </div>
 
             <div class="col-xl-4 col-md-12">
                 <!-- Doughnut Chart -->
-                @include("pages.backEnd.dashboard._doughnut")
+                <div class="card card-default">
+                    <div class="card-header justify-content-center">
+                        <h2>Rincian Pemesanan</h2>
+                    </div>
+                    <div class="card-body" >
+                        <canvas id="doChart" ></canvas>
+                    </div>
+                    <a href="#" class="pb-5 d-block text-center text-muted"></a>
+                </div>
             </div>
         </div>
     </div>
@@ -28,6 +43,7 @@
 <script src='{{ asset("assets-backEnd/js/chart.js") }}'></script>
 
 <script>
+    // Sales Graph
     var ctx = document.getElementById("linechart");
     if (ctx !== null) {
         var chart = new Chart(ctx, {
@@ -158,52 +174,81 @@
         });
     }
 
-    /*======== 11. DOUGHNUT CHART ========*/
-    var doughnut = document.getElementById("doChart");
-    if (doughnut !== null) {
-        var myDoughnutChart = new Chart(doughnut, {
-        type: "doughnut",
-        data: {
-            labels: ["completed", "unpaid", "pending", "canceled"],
-            datasets: [
-            {
-                label: ["completed", "unpaid", "pending", "canceled"],
-                data: [4100, 2500, 1800, 2300],
-                backgroundColor: ["#4c84ff", "#29cc97", "#8061ef", "#fec402"],
-                borderWidth: 1
-                // borderColor: ['#4c84ff','#29cc97','#8061ef','#fec402']
-                // hoverBorderColor: ['#4c84ff', '#29cc97', '#8061ef', '#fec402']
-            }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-            display: false
-            },
-            cutoutPercentage: 75,
-            tooltips: {
-            callbacks: {
-                title: function(tooltipItem, data) {
-                return "Order : " + data["labels"][tooltipItem[0]["index"]];
-                },
-                label: function(tooltipItem, data) {
-                return data["datasets"][0]["data"][tooltipItem["index"]];
+    // Doughnut Chart
+$(document).ready(function(){
+    $.ajax({
+        url : "{{ route("rincian") }}",
+        type : "GET",
+        success : function(data){
+            console.log(data);
+
+            var status = {
+                paid: [],
+                waiting: [],
+                pending: [],
+                failed: []
+            };
+
+            var len = data.length;
+            for (let i = 0; i < len; i++) {
+                if(data[i].status == "paid"){
+                    status.paid.push(data[i].status)
+                }else if(data[i].status == "waiting"){
+                    status.waiting.push(data[i].status)
+                }else if(data[i].status == "pending"){
+                    status.pending.push(data[i].status)
+                }else if(data[i].status == "failed"){
+                    status.failed.push(data[i].status)
                 }
-            },
-            titleFontColor: "#888",
-            bodyFontColor: "#555",
-            titleFontSize: 12,
-            bodyFontSize: 14,
-            backgroundColor: "rgba(256,256,256,0.95)",
-            displayColors: true,
-            borderColor: "rgba(220, 220, 220, 0.9)",
-            borderWidth: 2
+            }
+
+            var doughnut = document.getElementById("doChart");
+            if (doughnut !== null) {
+                var myDoughnutChart = new Chart(doughnut, {
+                type: "doughnut",
+                data: {
+                    labels: ["paid", "pending", "waiting", "failed"],
+                    datasets: [
+                        {
+                            label: ["paid", "pending", "waiting", "failed"],
+                            data: [2000, 2500, 1800, 2900],
+                            backgroundColor: ["#4c84ff", "#29cc97", "#8061ef", "#fec402"],
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                    display: false
+                    },
+                    cutoutPercentage: 75,
+                    tooltips: {
+                    callbacks: {
+                        title: function(tooltipItem, data) {
+                        return "Order : " + data["labels"][tooltipItem[0]["index"]];
+                        },
+                        label: function(tooltipItem, data) {
+                        return data["datasets"][0]["data"][tooltipItem["index"]];
+                        }
+                    },
+                    titleFontColor: "#888",
+                    bodyFontColor: "#555",
+                    titleFontSize: 12,
+                    bodyFontSize: 14,
+                    backgroundColor: "rgba(256,256,256,0.95)",
+                    displayColors: true,
+                    borderColor: "rgba(220, 220, 220, 0.9)",
+                    borderWidth: 2
+                    }
+                }
+                });
             }
         }
-        });
-    }
+    })
+})
+
 </script>
 
 @endpush
