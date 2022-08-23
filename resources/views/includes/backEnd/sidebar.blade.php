@@ -71,12 +71,12 @@
                     <span class="nav-text">Admin</span>
                 </a>
             </li>
-            <li class="has-sub expand">
+            {{-- <li class="has-sub expand">
                 <a class="sidenav-item-link text-capitalize" href="index copy.html" >
                     <i class="mdi mdi-settings"></i>
                     <span class="nav-text">Settings</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>
