@@ -20,7 +20,7 @@ class ProductRepository implements ProductInterface
 
     public function store($request)
     {
-        $data = $request->only("name", "price", "description", "categories_id");
+        $data = $request->only("name", "price", "description", "categories_id", "price_modal", "unit", "quantity");
         $data["slug"] = Str::slug($request->input("name"));
         Product::create($data);
     }

@@ -23,7 +23,10 @@ class Product extends Model
         "price",
         "description",
         "slug",
-        "categories_id"
+        "categories_id",
+        "price_modal",
+        "unit",
+        "quantity"
     ];
 
     /**
