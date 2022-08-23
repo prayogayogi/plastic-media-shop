@@ -71,6 +71,27 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-4">
+                                                <label for="price_modal">Price modal</label>
+                                                <input type="text" name="price_modal" class="form-control" id="price_modal" value="{{ $product->price_modal }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-4">
+                                                <label for="satuan">Satuan</label>
+                                                <input type="text" name="unit" class="form-control" id="satuan" value="{{ $product->unit }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-4">
+                                                <label for="jumlah">Jumlah</label>
+                                                <input type="text" name="quantity" class="form-control" id="jumlah" value="{{ $product->quantity }}">
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 
