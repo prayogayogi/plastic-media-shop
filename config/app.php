@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ProductProdviderBackEnd::class,
+        App\Providers\FrontEndProvider::class,
+        App\Providers\CartProvider::class,
 
     ],
 

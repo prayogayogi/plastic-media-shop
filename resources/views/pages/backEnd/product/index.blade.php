@@ -36,6 +36,9 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
+                                <th>Price Modal</th>
+                                <th>Isi</th>
+                                <th>Satuan</th>
                                 <th>Price</th>
                                 <th>Produc Category</th>
                                 <th>Action</th>
@@ -67,6 +70,9 @@
             columns: [
                 { data: 'DT_RowIndex', name: 'id' },
                 { data: 'name', name: 'name' },
+                { data: 'price_modal', render: $.fn.dataTable.render.number( '.', ',', 0, 'Rp ' ) },
+                { data: 'quantity', name: 'quantity' },
+                { data: 'unit', name: 'unit' },
                 { data: 'price', render: $.fn.dataTable.render.number( '.', ',', 0, 'Rp ' ) },
                 { data: 'product_category.name', name: 'ProductCategory.name' },
                 { data: 'action', name: 'action' }

@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\backEnd\AdminInterface;
+use App\Interfaces\backEnd\ProfitInterface;
 use App\Interfaces\backEnd\ProductInterface;
 use App\Interfaces\backEnd\CustomerInterface;
 use App\Repositories\backEnd\AdminRepository;
+use App\Repositories\backEnd\ProfitRepository;
 use App\Repositories\backEnd\ProductRepository;
 use App\Interfaces\backEnd\TransactionInterface;
 use App\Repositories\backEnd\CustomerRepository;
@@ -31,6 +33,7 @@ class ProductProdviderBackEnd extends ServiceProvider
         $this->app->bind(ProductCategoryInterface::class, ProductCategoryRepository::class);
         $this->app->bind(GalleriProductInterface::class, GalleriProductRepository::class);
         $this->app->bind(TransactionInterface::class, TransactionRepository::class);
+        $this->app->bind(ProfitInterface::class, ProfitRepository::class);
     }
 
     /**

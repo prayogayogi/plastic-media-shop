@@ -10,7 +10,7 @@ class AdminRepository implements AdminInterface
 {
     public function index()
     {
-        $admin = User::all();
+        $admin = User::where("roles", "ADMIN");
         return Datatables::of($admin)
             ->addColumn('action', "pages.actionDataTable.admin.edit")
             ->addIndexColumn()

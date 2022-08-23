@@ -10,18 +10,17 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $order = Transaction::count();
-        $income = Transaction::sum("total_price");
+        $order = Transaction::where("status", "paid")->count();
+        $income = Transaction::where("status", "paid")->sum("total_price");
         return view("pages.backEnd.dashboard.index", [
             "order" => $order,
             "income" => $income
         ]);
     }
 
-
     public function rincian()
     {
-        $order = Transaction::all();
+        $order = Transaction::select("id", "status", "total_price")->get();
         return response()->json($order);
     }
 }

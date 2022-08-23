@@ -11,7 +11,7 @@ class CustomerRepository implements CustomerInterface
 {
     public function index()
     {
-        $customer = Customer::all();
+        $customer = User::where("roles", "CUSTOMER");
         return Datatables::of($customer)
             ->addColumn('action', "pages.actionDataTable.customer.edit")
             ->addIndexColumn()

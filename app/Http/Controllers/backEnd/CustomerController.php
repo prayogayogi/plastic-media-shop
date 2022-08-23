@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backEnd;
 
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -59,7 +60,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(User $customer)
     {
         //
     }
@@ -70,7 +71,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(User $customer)
     {
         return view("pages.backEnd.customer.edit", [
             "customer" => $customer
@@ -84,7 +85,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, User $customer)
     {
         $this->customer->update($request, $customer);
         return redirect()->route("customer.index")->with("success", "Data Success Edit");
@@ -96,7 +97,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(User $customer)
     {
         $this->customer->destroy($customer);
         return redirect()->route("customer.index")->with("success", "Data Success Delete");

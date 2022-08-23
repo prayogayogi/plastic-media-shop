@@ -1,6 +1,6 @@
 <footer class="footer mt-auto">
     <div class="copyright bg-white text-center">
-        <p>Copyright &copy; <span id="copy-year"></span> a template by <a class="text-primary" href="https://themefisher.com" target="_blank">Themefisher</a>.</p>
+        <p>Copyright &copy; <span id="copy-year"></span> by <a class="text-primary" href="{{ route("dashboard") }}" target="_blank">Media Plastik - All Rights Reserved.</a>.</p>
     </div>
     <script>
         var d = new Date();
