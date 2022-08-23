@@ -24,22 +24,19 @@
             <!-- User Account -->
             <li class="dropdown user-menu">
                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                    <img src="{{ asset("assets-backEnd/img/user/user.png") }}" class="user-image" alt="User Image" />
+                    <img src="{{ asset("assets-backEnd/img/user/images.png") }}" class="user-image" alt="User Image" />
                     <span class="d-none d-lg-inline-block">{{ auth()->user()->name }}</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <!-- User image -->
                     <li class="dropdown-header">
-                        <img src="{{ asset("assets-backEnd/img/user/user.png") }}" class="img-circle" alt="User Image" />
+                        <img src="{{ asset("assets-backEnd/img/user/images.png") }}" class="img-circle" alt="User Image" />
                         <div class="d-inline-block">
                             {{ auth()->user()->name }} <small class="pt-1">{{ auth()->user()->email }}</small>
                         </div>
                     </li>
                     <li>
-                        <a href="user-profile.html"><i class="mdi mdi-account"></i> My Profile</a>
-                    </li>
-                    <li class="right-sidebar-in">
-                        <a href="javascript:0"> <i class="mdi mdi-settings"></i> Setting </a>
+                        <a href="{{ route("admin.edit", auth()->user()->id) }}"><i class="mdi mdi-account"></i> My Profile</a>
                     </li>
                     <li class="dropdown-footer">
                         <form method="POST" action="{{ route('logout') }}">
@@ -49,7 +46,6 @@
                                 <i class="mdi mdi-logout"></i> Log Out
                             </a>
                         </form>
-                        {{-- <a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a> --}}
                     </li>
                 </ul>
             </li>
