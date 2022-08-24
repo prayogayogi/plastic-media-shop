@@ -32,6 +32,24 @@
                         <canvas id="doChart" ></canvas>
                     </div>
                     <a href="#" class="pb-5 d-block text-center text-muted"></a>
+                    <div class="card-footer d-flex flex-wrap bg-white p-0">
+                        <div class="col-6">
+                            <div class="py-4 px-4">
+                            <ul class="d-flex flex-column justify-content-between">
+                                <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #4c84ff"></i>Paid</li>
+                                <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #8061ef "></i>Waiting</li>
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="col-6 border-left">
+                            <div class="py-4 px-4 ">
+                            <ul class="d-flex flex-column justify-content-between">
+                                <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #29cc97"></i>Pending</li>
+                                <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2" style="color: #fec402"></i>Failed</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -83,7 +101,7 @@
                 5000,
                 23000,
                 14000,
-                19000,
+                29000,
                 ],
                 lineTension: 0.3,
                 pointRadius: 5,
@@ -180,7 +198,6 @@ $(document).ready(function(){
         url : "{{ route("rincian") }}",
         type : "GET",
         success : function(data){
-            console.log(data);
 
             var status = {
                 paid: [],
@@ -202,6 +219,8 @@ $(document).ready(function(){
                 }
             }
 
+            console.log(status['paid'].length);
+
             var doughnut = document.getElementById("doChart");
             if (doughnut !== null) {
                 var myDoughnutChart = new Chart(doughnut, {
@@ -211,38 +230,38 @@ $(document).ready(function(){
                     datasets: [
                         {
                             label: ["paid", "pending", "waiting", "failed"],
-                            data: [2000, 2500, 1800, 2900],
+                            data: [status['paid'].length, status['pending'].length, status['waiting'].length, status['failed'].length],
                             backgroundColor: ["#4c84ff", "#29cc97", "#8061ef", "#fec402"],
                             borderWidth: 1
                         }
                     ]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    legend: {
-                    display: false
-                    },
-                    cutoutPercentage: 75,
-                    tooltips: {
-                    callbacks: {
-                        title: function(tooltipItem, data) {
-                        return "Order : " + data["labels"][tooltipItem[0]["index"]];
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                        display: false
                         },
-                        label: function(tooltipItem, data) {
-                        return data["datasets"][0]["data"][tooltipItem["index"]];
+                        cutoutPercentage: 75,
+                        tooltips: {
+                        callbacks: {
+                            title: function(tooltipItem, data) {
+                            return "Order : " + data["labels"][tooltipItem[0]["index"]];
+                            },
+                            label: function(tooltipItem, data) {
+                            return data["datasets"][0]["data"][tooltipItem["index"]];
+                            }
+                        },
+                        titleFontColor: "#888",
+                        bodyFontColor: "#555",
+                        titleFontSize: 12,
+                        bodyFontSize: 14,
+                        backgroundColor: "rgba(256,256,256,0.95)",
+                        displayColors: true,
+                        borderColor: "rgba(220, 220, 220, 0.9)",
+                        borderWidth: 2
                         }
-                    },
-                    titleFontColor: "#888",
-                    bodyFontColor: "#555",
-                    titleFontSize: 12,
-                    bodyFontSize: 14,
-                    backgroundColor: "rgba(256,256,256,0.95)",
-                    displayColors: true,
-                    borderColor: "rgba(220, 220, 220, 0.9)",
-                    borderWidth: 2
                     }
-                }
                 });
             }
         }
