@@ -14,7 +14,7 @@
                 <!-- Sales Graph -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h2>CUSTOMER</h2>
+                        <h2>Hasil Penjualan</h2>
                     </div>
                     <div class="card-body">
                         <canvas id="linechart" class="chartjs"></canvas>
@@ -61,136 +61,197 @@
 <script src='{{ asset("assets-backEnd/js/chart.js") }}'></script>
 
 <script>
-    // Sales Graph
-    var ctx = document.getElementById("linechart");
-    if (ctx !== null) {
-        var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: "line",
+// Sales Graph
+$(document).ready(function(){
 
-        // The data for our dataset
-        data: {
-            labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec"
-            ],
-            datasets: [
-            {
-                label: "",
-                backgroundColor: "transparent",
-                borderColor: "rgb(82, 136, 255)",
-                data: [
-                100,
-                11000,
-                10000,
-                14000,
-                11000,
-                17000,
-                14500,
-                18000,
-                5000,
-                23000,
-                14000,
-                29000,
-                ],
-                lineTension: 0.3,
-                pointRadius: 5,
-                pointBackgroundColor: "rgba(255,255,255,1)",
-                pointHoverBackgroundColor: "rgba(255,255,255,1)",
-                pointBorderWidth: 2,
-                pointHoverRadius: 8,
-                pointHoverBorderWidth: 1
-            }
-            ]
-        },
+    $.ajax({
+        url : "{{ route("customerCart") }}",
+        type : "GET",
+        success : function(data){
+            console.log(data);
 
-        // Configuration options go here
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-            display: false
-            },
-            layout: {
-            padding: {
-                right: 10
+            var customer = {
+                Jan: [],
+                Feb: [],
+                Mar: [],
+                Apr: [],
+                May: [],
+                Jun: [],
+                Jul: [],
+                Aug: [],
+                Sep: [],
+                Oct: [],
+                Nov: [],
+                Dec: [],
+            };
+
+            for (let i = 0; i < data.length; i++) {
+                const element = data[i];
+                if(element["created_at"].substring(5, 7) == 01){
+                    customer.Jan.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 02){
+                    customer.Feb.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 03){
+                    customer.Mar.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 04){
+                    customer.Apr.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 05){
+                    customer.May.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 06){
+                    customer.Jun.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 07){
+                    customer.Jul.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 08){
+                    customer.Aug.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 09){
+                    customer.Sep.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 10){
+                    customer.Oct.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 11){
+                    customer.Nov.push(data[i]["total_price"])
+                }else if(element["created_at"].substring(5, 7) == 12){
+                    customer.Dec.push(data[i]["total_price"])
+                }
             }
-            },
-            scales: {
-            xAxes: [
-                {
-                gridLines: {
-                    display: false
-                }
-                }
-            ],
-            yAxes: [
-                {
-                gridLines: {
-                    display: true,
-                    color: "#eee",
-                    zeroLineColor: "#eee",
-                },
-                ticks: {
-                    callback: function(value) {
-                    var ranges = [
-                        { divider: 1e6, suffix: "M" },
-                        { divider: 1e4, suffix: "k" }
-                    ];
-                    function formatNumber(n) {
-                        for (var i = 0; i < ranges.length; i++) {
-                        if (n >= ranges[i].divider) {
-                            return (
-                            (n / ranges[i].divider).toString() + ranges[i].suffix
-                            );
+
+            console.log(customer);
+            const formatRupiah = (money) => {
+                return new Intl.NumberFormat('id-ID',
+                    { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }
+                ).format(money);
+            }
+            var ctx = document.getElementById("linechart");
+            if (ctx !== null) {
+                var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: "line",
+
+                // The data for our dataset
+                data: {
+                    labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec"
+                    ],
+                    datasets: [
+                        {
+                            label: "Data Profit Perbulan",
+                            backgroundColor: "transparent",
+                            borderColor: "rgb(82, 136, 255)",
+                            data: [
+                            customer.Jan.reduce((a, b) => a + b, 0),
+                            customer.Feb.reduce((a, b) => a + b, 0),
+                            customer.Mar.reduce((a, b) => a + b, 0),
+                            customer.Apr.reduce((a, b) => a + b, 0),
+                            customer.May.reduce((a, b) => a + b, 0),
+                            customer.Jun.reduce((a, b) => a + b, 0),
+                            customer.Jul.reduce((a, b) => a + b, 0),
+                            customer.Aug.reduce((a, b) => a + b, 0),
+                            customer.Sep.reduce((a, b) => a + b, 0),
+                            customer.Oct.reduce((a, b) => a + b, 0),
+                            customer.Nov.reduce((a, b) => a + b, 0),
+                            customer.Dec.reduce((a, b) => a + b, 0)
+                            ],
+                            lineTension: 0.3,
+                            pointRadius: 5,
+                            pointBackgroundColor: "rgba(255,255,255,1)",
+                            pointHoverBackgroundColor: "rgba(255,255,255,1)",
+                            pointBorderWidth: 2,
+                            pointHoverRadius: 8,
+                            pointHoverBorderWidth: 1
                         }
-                        }
-                        return n;
-                    }
-                    return formatNumber(value);
-                    }
-                }
-                }
-            ]
-            },
-            tooltips: {
-            callbacks: {
-                title: function(tooltipItem, data) {
-                return data["labels"][tooltipItem[0]["index"]];
+                    ]
                 },
-                label: function(tooltipItem, data) {
-                return "$" + data["datasets"][0]["data"][tooltipItem["index"]];
-                }
-            },
-            responsive: true,
-            intersect: false,
-            enabled: true,
-            titleFontColor: "#888",
-            bodyFontColor: "#555",
-            titleFontSize: 12,
-            bodyFontSize: 18,
-            backgroundColor: "rgba(256,256,256,0.95)",
-            xPadding: 20,
-            yPadding: 10,
-            displayColors: false,
-            borderColor: "rgba(220, 220, 220, 0.9)",
-            borderWidth: 2,
-            caretSize: 10,
-            caretPadding: 15
+
+                    // Configuration options go here
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: {
+                        display: false
+                        },
+                        layout: {
+                        padding: {
+                            right: 10
+                        }
+                        },
+                        scales: {
+                        xAxes: [
+                            {
+                            gridLines: {
+                                display: false
+                            }
+                            }
+                        ],
+                        yAxes: [
+                            {
+                            gridLines: {
+                                display: true,
+                                color: "#eee",
+                                zeroLineColor: "#eee",
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                var ranges = [
+                                    { divider: 1e6, suffix: "M" },
+                                    { divider: 1e4, suffix: "k" }
+                                ];
+                                function formatNumber(n) {
+                                    for (var i = 0; i < ranges.length; i++) {
+                                    if (n >= ranges[i].divider) {
+                                        return (
+                                        (n / ranges[i].divider).toString() + ranges[i].suffix
+                                        );
+                                    }
+                                    }
+                                    return n;
+                                }
+                                return formatNumber(value);
+                                }
+                            }
+                            }
+                        ]
+                        },
+                        tooltips: {
+                        callbacks: {
+                            title: function(tooltipItem, data) {
+                            return data["labels"][tooltipItem[0]["index"]];
+                            },
+                            label: function(tooltipItem, data) {
+                            return formatRupiah(data["datasets"][0]["data"][tooltipItem["index"]]) + ",00";
+                            }
+                        },
+                        responsive: true,
+                        intersect: false,
+                        enabled: true,
+                        titleFontColor: "#888",
+                        bodyFontColor: "#555",
+                        titleFontSize: 12,
+                        bodyFontSize: 18,
+                        backgroundColor: "rgba(256,256,256,0.95)",
+                        xPadding: 20,
+                        yPadding: 10,
+                        displayColors: false,
+                        borderColor: "rgba(220, 220, 220, 0.9)",
+                        borderWidth: 2,
+                        caretSize: 10,
+                        caretPadding: 15
+                        }
+                    }
+                });
             }
         }
-        });
-    }
+    })
+})
 
     // Doughnut Chart
 $(document).ready(function(){
@@ -218,8 +279,6 @@ $(document).ready(function(){
                     status.failed.push(data[i].status)
                 }
             }
-
-            console.log(status['paid'].length);
 
             var doughnut = document.getElementById("doChart");
             if (doughnut !== null) {
